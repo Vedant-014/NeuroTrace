@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* --- Color system: clinical teal/navy, warm teal accent --- */
+  --color-ink-950: #0A1E24;
+  --color-ink-900: #0F2B33;
+  --color-navy-800: #0F4C5C;
+  --color-navy-700: #14606F;
+  --color-teal-600: #0D9488;
+  --color-teal-500: #14B8A6;
+  --color-teal-400: #2DD4BF;
+  --color-teal-100: #CCFBF1;
+  --color-teal-50:  #F0FDFA;
+  --color-mist-50:  #F7FAFB;
+  --color-mist-100: #EEF3F5;
+  --color-mist-200: #DCE6E9;
+  --color-slate-600: #4B5D63;
+  --color-slate-500: #6B7F85;
+  --color-amber-500: #D97706;
+  --color-rose-500: #E11D48;
+
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --shadow-card: 0 1px 2px rgba(15,43,51,0.04), 0 8px 24px -8px rgba(15,43,51,0.10);
+  --shadow-card-hover: 0 4px 12px rgba(15,43,51,0.08), 0 16px 40px -12px rgba(15,43,51,0.16);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-ink-900);
+  background: var(--color-mist-50);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+/* Signature motif: hand-drawn spiral stroke, used as an animated accent */
+.spiral-draw {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-spiral 2.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+@keyframes draw-spiral {
+  to { stroke-dashoffset: 0; }
+}
+
+.fade-up {
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spiral-draw, .fade-up { animation: none !important; }
+}
+
+::selection { background: var(--color-teal-100); color: var(--color-ink-900); }
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid var(--color-teal-500);
+  outline-offset: 2px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-mist-200); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-slate-500); }
